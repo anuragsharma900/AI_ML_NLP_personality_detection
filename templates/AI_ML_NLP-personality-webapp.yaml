@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nlp-ml-webapp-deployment
+  labels:
+    app: nlp-ml-webapp
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nlp-ml-webapp
+  template:
+    metadata:
+      labels:
+        app: nlp-ml-webapp
+    spec:
+      containers:
+        - name: nlp-ml-personality-webapp
+          image: anuragsharma900/personality-detection:latest
+          ports:
+            - containerPort: 5001
